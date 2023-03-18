@@ -1,0 +1,36 @@
+.table {
+    background-color: #F3F3F3;
+    border: 2px solid #C1C1C1;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #C1C1C1;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #BFBFBF;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .table td {
+    background-color: #FDFDFD;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 600px) {
+    form {
+      width: 90%;
+    }
+  }
