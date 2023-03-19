@@ -4,7 +4,7 @@
     {% block content%}
     <h1 style="text-align:center;">Add Employee</h1>
     <hr>
-    <form action="/add" method="post">
+    <form action="/add/" method="post">
         {% csrf_token %}
         <label for="first_name">First Name</label><br>
         <input type="text" class="form-control" id="first_name" name="first_name" value="{{ first_name }}"><br>
@@ -13,9 +13,26 @@
         <label for="salary">Salary</label><br>
         <input type="number" class="form-control" id="salary" name="salary" value="{{ salary }}"><br>
         <label for="dept">Department</label><br>
-        <input type="number" class="form-control" id="dept" name="dept" value="{{ dept }}"><br>
+        <select name="dept" class="form-control">
+            {% for x in departments %}
+
+            <option value="{{x.id}}">{{x.name}}</option>
+
+            {% endfor %}
+
+        </select>
+
+        <!-- {% comment %} <input type="number" class="form-control" id="dept" name="dept" value="{{ dept }}"><br> {% endcomment %} -->
         <label for="role">Role</label><br>
-        <input type="number" class="form-control" id="role" name="role" value="{{ role }}"><br>
+        <select name="role" class="form-control">
+            {% for x in roles %}
+
+            <option value="{{x.id}}">{{x.name}}</option>
+
+            {% endfor %}
+
+        </select>
+        <!-- <input type="number" class="form-control" id="role" name="role" value="{{ role }}"><br> -->
         <label for="bonus">Bonus</label><br>
         <input type="number" class="form-control" id="bonus" name="bonus" value="{{ bonus }}"><br>
         <label for="phone">Phone Number</label><br>
