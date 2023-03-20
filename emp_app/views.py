@@ -3,6 +3,14 @@ from emp_app.models import Employee, Department, Role
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
+
+def filter(request):
+    data = Employee.objects.all()
+    context = {
+        'data': data
+    }
+    return render(request, 'filter.html', context)
+
 def view_all(request):
     emps=Employee.objects.all()
     return render(request, 'view_all.html',{'emps':emps})
@@ -60,3 +68,4 @@ def edit(request, id):
         emp.phone = request.POST['phone']
         emp.save()
         return redirect("/view-all/")
+
