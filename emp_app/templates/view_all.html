@@ -3,7 +3,7 @@
      {% block title%}View all Employee{% endblock title%}
      {% block content %}
      <h1 style="text-align:center;">All Employee detail</h1>
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
      <table class="table">
       <thead>
         <tr>
@@ -13,10 +13,11 @@
           <th scope="col">Salary</th>
           <th scope="col">Bonus</th>
           <th scope="col">Phone Number</th>
-          <th scope="col">Role</th>
           <th scope="col">Department</th>
+          <th scope="col">Role</th>
           <th scope="col">Location</th>
           <th scope="col">Hiredate</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
              {% for emp in emps %}
@@ -28,10 +29,14 @@
           <td>{{emp.salary}}</td>
           <td>{{emp.bonus}}</td>
           <td>{{emp.phone}}</td>
-          <td>{{emp.role.name}}</td>
           <td>{{emp.dept.name}}</td>
+          <td>{{emp.role.name}}</td>
           <td>{{emp.dept.location}}</td>
           <td>{{emp.hire_date}}</td>
+          <td>
+            <a href="/edit/{{emp.id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a href="/delete/{{emp.id}}"><i class="fa-solid fa-delete-left"></i></a>
+          </td>
         </tr>
       </tbody>
              {% endfor %}

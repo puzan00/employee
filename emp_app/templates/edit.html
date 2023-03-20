@@ -1,25 +1,36 @@
 {% extends 'core/base.html' %}
-{%block title%}Update Employee {% endblock title%}
+{%block title%}Edit Employee {% endblock title%}
   
     {% block content%}
-    <h1 style="text-align:center;">Update Employee</h1>
+    <h1 style="text-align:center;"> Update Employee</h1>
     <hr>
-    <form method="post">
+    <form action="/edit/{{emp.id}}" method="post">
         {% csrf_token %}
         <label for="first_name">First Name</label><br>
-        <input type="text" class="form-control" id="first_name" name="first_name" value="{{ first_name }}"><br>
+        <input type="text" class="form-control" id="first_name" name="first_name" value = {{emp.first_name}}><br>
         <label for="last_name">Last Name</label><br>
-        <input type="text" class="form-control" id="last_name" name = "last_name" value="{{ last_name }}"><br>
+        <input type="text" class="form-control" id="last_name" name = "last_name" value = {{emp.last_name}}><br>
         <label for="salary">Salary</label><br>
-        <input type="number" class="form-control" id="salary" name="salary" value="{{ salary }}"><br>
+        <input type="number" class="form-control" id="salary" name="salary" value = {{emp.salary}}><br>
         <label for="dept">Department</label><br>
-        <input type="number" class="form-control" id="dept" name="dept" value="{{ dept }}"><br>
+        <select name="dept" class="form-control">
+            {% for x in departments %}
+                    <option {% if x.id == emp.dept.id %}selected{% endif %} value="{{x.id}}">{{x.name}}</option>
+            {% endfor %}
+        </select>
+    
         <label for="role">Role</label><br>
-        <input type="number" class="form-control" id="role" name="role" value="{{ role }}"><br>
+        <select name="role" class="form-control">
+            {% comment %} <option selected>{{emp.role}}</option> {% endcomment %}
+            {% for x in roles %}
+                    <option {% if x.id == emp.role.id %}selected{% endif %} value="{{x.id}}">{{x.name}}</option>
+            {% endfor %}
+        </select>
+        <!-- <input type="number" class="form-control" id="role" name="role" value="{{ role }}"><br> -->
         <label for="bonus">Bonus</label><br>
-        <input type="number" class="form-control" id="bonus" name="bonus" value="{{ bonus }}"><br>
+        <input type="number" class="form-control" id="bonus" name="bonus" value = {{emp.bonus}}><br>
         <label for="phone">Phone Number</label><br>
-        <input type="number" class="form-control" id="phone" name="phone" value="{{ phone }}"><br>
+        <input type="number" class="form-control" id="phone" name="phone" value = {{emp.phone}}><br>
         <hr>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
