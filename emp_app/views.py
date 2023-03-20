@@ -1,6 +1,5 @@
 from django.shortcuts import render,HttpResponse,redirect
 from emp_app.models import Employee, Department, Role
-from .forms import EmployeeForm
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
